@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Progress Tracker</title>
+  <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+
+<header class="header">
+  <h1 id="greeting"></h1>
+</header>
+
+<section class="calendar-wrapper">
+  <div class="calendar" id="calendar"></div>
+</section>
+
+<section class="actions">
+  <button id="addProgramBtn">Add Program</button>
+  <button id="deleteProgramBtn">Delete Program</button>
+</section>
+
+<!-- PROGRAM CARDS -->
+<main class="content" id="programList"></main>
+
+<!-- SESSION DRAWER -->
+<section class="drawer session-drawer" id="sessionDrawer">
+  <h3 id="sessionProgramTitle"></h3>
+
+  <div class="session-actions">
+    <button class="answer-btn correct">Correct</button>
+    <button class="answer-btn wrong">Wrong</button>
+  </div>
+
+  <div class="session-controls">
+    <button id="saveSessionBtn">Save</button>
+    <button id="cancelSessionBtn">Cancel</button>
+  </div>
+</section>
+
+<div id="sessionBackdrop" class="drawer-backdrop"></div>
+
+<!-- ADD PROGRAM DRAWER -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+<section class="drawer" id="programDrawer">
+  <div class="drawer-header">
+    <h2>Add Program</h2>
+    <button class="drawer-cancel" id="cancelDrawer">Cancel</button>
+  </div>
+
+  <form class="drawer-form" id="programForm">
+    <label>
+      Program Name
+      <input type="text" id="programName" required />
+    </label>
+
+    <label>
+      Number of Questions
+      <input type="number" id="programQuestions" min="1" required />
+    </label>
+
+    <button type="submit" class="drawer-save">Save Program</button>
+  </form>
+</section>
+
+<!-- DELETE PROGRAMS DRAWER -->
+<section class="delete-drawer" id="deleteDrawer">
+  <header class="delete-drawer__header">
+    <button id="cancelDeleteBtn" class="drawer-cancel">Cancel</button>
+    <h2>Delete Programs</h2>
+    <button id="confirmDeleteBtn" class="delete-confirm">Delete</button>
+  </header>
+
+  <div class="delete-list" id="deleteProgramList">
+    <!-- Program items injected by JS -->
+  </div>
+</section>
+
+<div class="drawer-backdrop" id="deleteBackdrop"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
