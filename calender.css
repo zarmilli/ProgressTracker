@@ -1,0 +1,168 @@
+:root {
+  --bg: #171717;
+  --card-bg: #262626;
+  --text: #f9fafb;
+  --muted: #9aa0aa;
+  --accent: #AF7650;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+}
+
+.top-bar {
+  padding: 16px;
+  background: var(--card-bg);
+}
+
+.content {
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+/* ---------- CALENDAR OVERLAY ---------- */
+.calendar-overlay {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--card-bg);
+  border-radius: 0 0 28px 28px;
+  padding: 16px;
+
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 20px;
+}
+
+/* WEEK */
+.calendar-week {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.week-day {
+  flex: 1;
+  background: #9aa0aa;
+  border-radius: 18px;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.week-day.active {
+  background: var(--accent);
+}
+
+.week-day span {
+  display: block;
+  font-size: 12px;
+}
+
+.week-day .date {
+  margin-top: 6px;
+  font-weight: bold;
+}
+
+/* MONTH */
+.calendar-month {
+  margin-top: 16px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.month-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.month-nav button {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.month-day {
+  padding: 10px;
+  text-align: center;
+  border-radius: 50%;
+  position: relative;
+}
+
+.month-day.has-data {
+  background: rgba(99,102,241,.25);
+}
+
+.month-day.selected {
+  background: var(--accent);
+}
+
+/* ---------- PROGRAM CARD ---------- */
+.program-card {
+  padding: 16px;
+  border-radius: 20px;
+  color: white;
+}
+
+.program-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-pill {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.25);
+}
+
+.progress-bar {
+  background: rgba(255,255,255,.2);
+  border-radius: 10px;
+  height: 8px;
+  margin: 12px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: white;
+}
+
+.program-stats,
+.program-card__footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}

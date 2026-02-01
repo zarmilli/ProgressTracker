@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Progress Calendar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="calender.css" />
+</head>
+<body>
+
+<header class="top-bar">
+  <h2>Progress Calendar</h2>
+</header>
+
+<!-- OVERLAY CALENDAR CARD -->
+<section class="calendar-overlay" id="calendarOverlay">
+  <header class="calendar-header">
+    <h3 id="calendarTitle">This Week</h3>
+    <button id="toggleCalendarBtn">▾</button>
+  </header>
+
+  <!-- WEEK VIEW -->
+  <div class="calendar-week" id="calendarWeek"></div>
+
+  <!-- MONTH VIEW -->
+  <div class="calendar-month hidden" id="calendarMonth">
+    <div class="month-nav">
+      <button id="prevMonth">‹</button>
+      <span id="monthLabel"></span>
+      <button id="nextMonth">›</button>
+    </div>
+
+    <div class="month-grid" id="monthGrid"></div>
+  </div>
+</section>
+
+<!-- DAY SESSIONS -->
+<main class="content" id="programList"></main>
+
+<script src="calender.js"></script>
+</body>
+</html>

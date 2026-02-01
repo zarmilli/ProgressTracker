@@ -12,6 +12,16 @@ function saveState() {
 let activeProgram = null;
 let activeSession = null;
 
+const fab = document.getElementById("openCalendarBtn");
+
+function hideFab() {
+  fab.classList.add("hidden");
+}
+
+function showFab() {
+  fab.classList.remove("hidden");
+}
+
 /* ---------- SESSION DRAWER ---------- */
 const sessionDrawer = document.getElementById("sessionDrawer");
 
@@ -26,6 +36,8 @@ function openSessionDrawer(program, session) {
   if (titleEl) titleEl.textContent = program.name;
 
   sessionDrawer.classList.add("open");
+
+  hideFab();
 }
 
 function closeSessionDrawer() {
@@ -360,9 +372,31 @@ document.addEventListener("click", e => {
 
 deleteBackdrop.onclick = closeDeleteDrawer;
 
+document.getElementById("openCalendarBtn").onclick = () => {
+  window.location.href = "calender.html";
+};
 
+function hideFab() {
+  document.getElementById("openCalendarBtn").style.display = "none";
+}
+
+function showFab() {
+  document.getElementById("openCalendarBtn").style.display = "flex";
+}
 
 /* ---------- INIT ---------- */
 setGreeting();
 renderWeekCalendar();
 renderPrograms();
+
+function openDrawer() {
+  drawer.classList.add("open");
+  backdrop.classList.add("show");
+  hideFab();
+}
+
+function closeDrawer() {
+  drawer.classList.remove("open");
+  backdrop.classList.remove("show");
+  showFab();
+}
