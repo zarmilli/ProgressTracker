@@ -22,6 +22,29 @@ function showFab() {
   fab.classList.remove("hidden");
 }
 
+/* ---------- TOAST ---------- */
+let toastTimeout = null;
+
+function showToast(type) {
+  const toast = document.getElementById("toast");
+
+  toast.textContent = "Entered";
+  toast.className = `toast show ${type}`;
+
+  clearTimeout(toastTimeout);
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 1200);
+}
+
+/* ---------- HAPTIC FEEDBACK ---------- */
+function vibrate(pattern = 20) {
+  if ("vibrate" in navigator) {
+    navigator.vibrate(pattern);
+  }
+}
+
 /* ---------- SESSION DRAWER ---------- */
 const sessionDrawer = document.getElementById("sessionDrawer");
 
@@ -258,20 +281,26 @@ sessionDrawer.addEventListener("click", e => {
   }
 });
 
-function answer(isCorrect) {
-  if (!activeSession) return;
+let answeringLocked = false;
 
-  // Prevent answering beyond total
-  if (activeSession.answered >= activeSession.total) return;
+function answer(isCorrect) {
+  if (!activeSession || answeringLocked) return;
+
+  answeringLocked = true;
+  requestAnimationFrame(() => answeringLocked = false);
+
+  vibrate(20);
 
   activeSession.answered++;
 
   if (isCorrect) {
     activeSession.correct++;
+    showToast("correct");
+  } else {
+    showToast("wrong");
   }
 
-  // Auto-complete when limit reached
-  if (activeSession.answered >= activeSession.total) {
+  if (activeSession.answered === activeSession.total) {
     completeSession();
     return;
   }
@@ -279,6 +308,13 @@ function answer(isCorrect) {
   saveState();
 }
 
+
+
+document.addEventListener("click", e => {
+  if (e.target.classList.contains("answer-btn")) {
+    answer(e.target.classList.contains("correct"));
+  }
+});
 
 /* ---------- SESSION ACTIONS ---------- */
 document.getElementById("saveSessionBtn").onclick = () => {

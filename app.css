@@ -470,3 +470,33 @@ html {
   pointer-events: none;
   transform: scale(0.85);
 }
+
+/* ---------- TOAST ---------- */
+.toast {
+  position: fixed;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  opacity: 0;
+  z-index: 1000;
+  transition: top 0.25s ease, opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.toast.show {
+  top: 20px;
+  opacity: 1;
+}
+
+.toast.correct {
+  background: #22c55e; /* green */
+}
+
+.toast.wrong {
+  background: #ef4444; /* red */
+}
