@@ -39,7 +39,7 @@ function showToast(type) {
 }
 
 /* ---------- HAPTIC FEEDBACK ---------- */
-function vibrate(pattern = 20) {
+function vibrate(pattern = 200) {
   if ("vibrate" in navigator) {
     navigator.vibrate(pattern);
   }
